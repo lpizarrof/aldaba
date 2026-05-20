@@ -1,14 +1,20 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Aldaba Ltda. | Arquitectos Constructores</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ALDABA LTDA. | Arquitectura + Construcción</title>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=DM+Sans:wght@300;400;500;700&display=swap');
 
-*{box-sizing:border-box;margin:0;padding:0}
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=DM+Sans:wght@300;400;500&display=swap');
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
 
 body{
   background:#111;
@@ -18,33 +24,33 @@ body{
   justify-content:center;
   font-family:'DM Sans',sans-serif;
   padding:30px;
-  color:#fff;
+  overflow:hidden;
 }
 
 .stage{
-  width:min(92vw,600px);
+  width:min(92vw,560px);
   aspect-ratio:1/1;
   overflow:hidden;
-  border-radius:8px;
-  box-shadow:0 40px 90px rgba(0,0,0,.7);
   position:relative;
+  border-radius:6px;
+  box-shadow:0 40px 80px rgba(0,0,0,.6);
 }
 
 .slides{
   display:flex;
   width:300%;
   height:100%;
-  transition:transform .65s ease;
+  transition:transform .7s cubic-bezier(.77,0,.175,1);
 }
 
 .slide{
-  width:33.333%;
+  width:33.3333%;
   height:100%;
   position:relative;
   overflow:hidden;
 }
 
-.bg-image{
+.slide img{
   position:absolute;
   inset:0;
   width:100%;
@@ -55,312 +61,393 @@ body{
 .overlay{
   position:absolute;
   inset:0;
-  background:linear-gradient(to bottom,rgba(0,0,0,.28),rgba(0,0,0,.78));
-  z-index:1;
+  background:linear-gradient(
+    to bottom,
+    rgba(0,0,0,.25),
+    rgba(0,0,0,.75)
+  );
 }
-
-.overlay.dark{background:rgba(0,0,0,.72)}
 
 .content{
   position:relative;
   z-index:2;
   height:100%;
-  padding:55px;
   display:flex;
   flex-direction:column;
   justify-content:flex-end;
+  padding:50px;
+  color:white;
 }
 
 .logo{
   position:absolute;
-  top:35px;
-  left:45px;
-  z-index:3;
+  top:32px;
+  left:40px;
+  z-index:5;
+  color:white;
   letter-spacing:.35em;
-  font-size:1.1rem;
-  font-weight:500;
+  font-size:1rem;
 }
 
 .logo small{
   display:block;
-  letter-spacing:.18em;
   font-size:.52rem;
+  letter-spacing:.18em;
   margin-top:4px;
   opacity:.7;
 }
 
-.tag{
-  font-size:.7rem;
-  letter-spacing:.25em;
-  color:#c8a46b;
-  margin-bottom:16px;
+.nav{
+  position:absolute;
+  top:32px;
+  right:35px;
+  z-index:5;
+  display:flex;
+  gap:18px;
+}
+
+.nav button{
+  background:none;
+  border:none;
+  color:white;
+  font-size:.68rem;
+  letter-spacing:.16em;
   text-transform:uppercase;
+  cursor:pointer;
+  opacity:.7;
+  transition:.3s;
+}
+
+.nav button:hover{
+  opacity:1;
+  color:#c8a46b;
+}
+
+.tag{
+  font-size:.68rem;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:#c8a46b;
+  margin-bottom:18px;
 }
 
 h1,h2{
   font-family:'Cormorant Garamond',serif;
   font-weight:300;
   line-height:.92;
-  margin-bottom:22px;
+  margin-bottom:20px;
 }
 
-h1{font-size:4.1rem}
-h2{font-size:3rem}
+h1{
+  font-size:4rem;
+}
+
+h2{
+  font-size:3rem;
+}
 
 p{
-  max-width:460px;
-  font-size:.95rem;
-  line-height:1.65;
+  max-width:430px;
+  line-height:1.7;
+  font-size:.92rem;
   opacity:.88;
 }
 
-.gold{color:#c8a46b}
-
-.contact-btn{
-  display:inline-flex;
-  width:fit-content;
+.services{
   margin-top:28px;
-  padding:15px 26px;
-  border:1px solid rgba(255,255,255,.35);
-  color:#fff;
-  text-decoration:none;
-  letter-spacing:.16em;
-  font-size:.68rem;
-  text-transform:uppercase;
-  background:rgba(255,255,255,.04);
-  backdrop-filter:blur(8px);
-  transition:.3s ease;
-}
-
-.contact-btn:hover{
-  background:#fff;
-  color:#111;
-  transform:translateY(-2px);
-}
-
-.services-grid{
   display:grid;
-  grid-template-columns:1fr;
   gap:16px;
-  margin-top:26px;
 }
 
 .service-card{
-  padding:19px;
-  border:1px solid rgba(255,255,255,.16);
-  background:rgba(255,255,255,.055);
-  backdrop-filter:blur(10px);
+  padding:18px;
+  border:1px solid rgba(255,255,255,.14);
+  background:rgba(255,255,255,.05);
+  backdrop-filter:blur(8px);
 }
 
 .service-card h3{
-  font-size:1.05rem;
-  margin-bottom:6px;
+  margin-bottom:8px;
   color:#c8a46b;
+  font-size:1rem;
 }
 
 .service-card p{
   font-size:.8rem;
-  line-height:1.45;
+  line-height:1.5;
+}
+
+.cta-button{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:fit-content;
+  margin-top:28px;
+  padding:16px 28px;
+  text-decoration:none;
+  color:white;
+  border:1px solid rgba(255,255,255,.28);
+  font-size:.68rem;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  transition:.35s ease;
+  background:rgba(255,255,255,.03);
+}
+
+.cta-button:hover{
+  background:white;
+  color:black;
+  transform:translateY(-2px);
 }
 
 .contact-box{
+  margin-top:24px;
   display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:18px;
-  margin:28px 0 4px;
+  gap:14px;
 }
 
 .contact-item{
   padding:16px;
-  border:1px solid rgba(255,255,255,.14);
   background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.12);
 }
 
 .contact-item small{
   display:block;
-  font-size:.62rem;
-  letter-spacing:.18em;
-  text-transform:uppercase;
-  color:#c8a46b;
   margin-bottom:6px;
-}
-
-.contact-item p{
-  font-size:.78rem;
-  opacity:.95;
+  color:#c8a46b;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  font-size:.6rem;
 }
 
 .controls{
   position:absolute;
-  bottom:18px;
+  bottom:20px;
   left:50%;
   transform:translateX(-50%);
-  z-index:10;
   display:flex;
   gap:10px;
+  z-index:5;
 }
 
 .controls button{
   width:11px;
   height:11px;
   border-radius:50%;
-  border:1px solid rgba(255,255,255,.7);
+  border:1px solid rgba(255,255,255,.8);
   background:transparent;
   cursor:pointer;
 }
 
-.controls button.active{background:#fff}
-
-.nav{
-  position:absolute;
-  top:22px;
-  right:30px;
-  z-index:10;
-  display:flex;
-  gap:18px;
-  font-size:.64rem;
-  letter-spacing:.16em;
-  text-transform:uppercase;
+.controls button.active{
+  background:white;
 }
-
-.nav button{
-  background:none;
-  border:none;
-  color:#fff;
-  opacity:.75;
-  cursor:pointer;
-}
-
-.nav button:hover{opacity:1;color:#c8a46b}
 
 @media(max-width:620px){
-  body{padding:10px}
-  .content{padding:38px}
-  h1{font-size:3.2rem}
-  h2{font-size:2.25rem}
-  .logo{top:25px;left:32px}
-  .nav{display:none}
-  .contact-box{grid-template-columns:1fr}
+
+  body{
+    padding:10px;
+  }
+
+  .content{
+    padding:38px;
+  }
+
+  h1{
+    font-size:3rem;
+  }
+
+  h2{
+    font-size:2.3rem;
+  }
+
+  .nav{
+    display:none;
+  }
+
 }
+
 </style>
 </head>
 
 <body>
 
-<main class="stage">
+<div class="stage">
 
+  <!-- LOGO -->
   <div class="logo">
     ALDABA
     <small>ARQUITECTOS CONSTRUCTORES</small>
   </div>
 
-  <nav class="nav">
+  <!-- NAV -->
+  <div class="nav">
     <button onclick="goToSlide(0)">Inicio</button>
     <button onclick="goToSlide(1)">Servicios</button>
-    <button onclick="goToSlide(2)">Contacto</button>
-  </nav>
+    <button onclick="goToSlide(2)">Contáctanos</button>
+  </div>
 
+  <!-- SLIDES -->
   <div class="slides" id="slides">
 
-    <!-- SLIDE 1: INICIO -->
+    <!-- SLIDE 1 -->
     <section class="slide">
-      <img class="bg-image" src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1600&auto=format&fit=crop" alt="Arquitectura contemporánea">
+
+      <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1600&auto=format&fit=crop">
+
       <div class="overlay"></div>
 
       <div class="content">
+
         <span class="tag">Inicio</span>
-        <h1>Diseñamos.<br>Construimos.<br><span class="gold">Transformamos.</span></h1>
+
+        <h1>
+          Arquitectura.<br>
+          Ingeniería.<br>
+          Construcción.
+        </h1>
+
         <p>
-          Arquitectura, ingeniería y construcción integradas para crear espacios residenciales,
-          comerciales e industriales con precisión técnica y diseño contemporáneo.
+          Desarrollo de proyectos residenciales,
+          industriales y remodelaciones premium
+          con precisión técnica y diseño contemporáneo.
         </p>
-        <a href="#" onclick="goToSlide(1); return false;" class="contact-btn">Ver servicios</a>
+
+        <a href="#" onclick="goToSlide(1)" class="cta-button">
+          Ver Servicios
+        </a>
+
       </div>
+
     </section>
 
-    <!-- SLIDE 2: SERVICIOS -->
+    <!-- SLIDE 2 -->
     <section class="slide">
-      <img class="bg-image" src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=1600&auto=format&fit=crop" alt="Construcción e ingeniería">
-      <div class="overlay dark"></div>
+
+      <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=1600&auto=format&fit=crop">
+
+      <div class="overlay"></div>
 
       <div class="content">
+
         <span class="tag">Servicios</span>
-        <h2>Soluciones integrales<br>de alto estándar.</h2>
 
-        <div class="services-grid">
+        <h2>
+          Soluciones integrales<br>
+          de alto estándar.
+        </h2>
+
+        <div class="services">
+
           <div class="service-card">
-            <h3>Viviendas exclusivas</h3>
-            <p>Diseño, ampliación y construcción de proyectos residenciales con identidad, calidad y detalle.</p>
+            <h3>Construcción de Viviendas</h3>
+            <p>
+              Diseño y ejecución de viviendas contemporáneas
+              con enfoque arquitectónico y constructivo premium.
+            </p>
           </div>
 
           <div class="service-card">
-            <h3>Proyectos industriales</h3>
-            <p>Infraestructura, habilitaciones, especialidades técnicas y soluciones para operación corporativa.</p>
+            <h3>Infraestructura Industrial</h3>
+            <p>
+              Desarrollo de proyectos industriales,
+              habilitaciones y soluciones técnicas integrales.
+            </p>
           </div>
 
           <div class="service-card">
-            <h3>Remodelaciones premium</h3>
-            <p>Transformación de departamentos, oficinas y espacios interiores con criterio arquitectónico.</p>
+            <h3>Remodelaciones Premium</h3>
+            <p>
+              Transformación de espacios residenciales
+              y comerciales con alta fidelidad constructiva.
+            </p>
           </div>
+
         </div>
 
-        <a href="#" onclick="goToSlide(2); return false;" class="contact-btn">Cotizar proyecto</a>
+        <a href="#" onclick="goToSlide(2)" class="cta-button">
+          Contáctanos
+        </a>
+
       </div>
+
     </section>
 
-    <!-- SLIDE 3: CONTACTANOS -->
-    <section class="slide" id="contacto">
-      <img class="bg-image" src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?q=80&w=1600&auto=format&fit=crop" alt="Contacto Aldaba">
+    <!-- SLIDE 3 -->
+    <section class="slide">
+
+      <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?q=80&w=1600&auto=format&fit=crop">
+
       <div class="overlay"></div>
 
       <div class="content">
+
         <span class="tag">Contáctanos</span>
-        <h2>De la idea<br>a la obra construida.</h2>
+
+        <h2>
+          De la idea<br>
+          a la obra construida.
+        </h2>
+
         <p>
-          Si tienes un proyecto residencial, comercial, industrial o de remodelación,
-          conversemos. Aldaba integra diseño, ingeniería y ejecución.
+          Arquitectura, construcción e ingeniería
+          integradas para desarrollar proyectos
+          de alto estándar.
         </p>
 
         <div class="contact-box">
+
           <div class="contact-item">
             <small>Email</small>
-            <p>contacto@aldabaltda.cl</p>
+            <p>contacto@aldaba.cl</p>
           </div>
 
           <div class="contact-item">
             <small>Instagram</small>
             <p>@aldaba.ltda</p>
           </div>
+
         </div>
 
         <a
-          href="mailto:contacto@aldabaltda.cl?subject=Cotización%20Proyecto%20Aldaba&body=Hola%20Aldaba,%20me%20gustaría%20cotizar%20un%20proyecto."
-          class="contact-btn"
+          href="mailto:contacto@aldaba.cl?subject=Cotización Proyecto Aldaba"
+          class="cta-button"
         >
           Hablemos de tu proyecto
         </a>
+
       </div>
+
     </section>
 
   </div>
 
+  <!-- CONTROLS -->
   <div class="controls">
     <button class="active" onclick="goToSlide(0)"></button>
     <button onclick="goToSlide(1)"></button>
     <button onclick="goToSlide(2)"></button>
   </div>
 
-</main>
+</div>
 
 <script>
+
 const slides = document.getElementById('slides');
-const buttons = document.querySelectorAll('.controls button');
+const dots = document.querySelectorAll('.controls button');
 
 function goToSlide(index){
-  slides.style.transform = `translateX(-${index * 33.333}%)`;
-  buttons.forEach(btn => btn.classList.remove('active'));
-  buttons[index].classList.add('active');
+
+  slides.style.transform =
+    `translateX(-${index * 33.3333}%)`;
+
+  dots.forEach(dot => dot.classList.remove('active'));
+
+  dots[index].classList.add('active');
+
 }
+
 </script>
 
 </body>
